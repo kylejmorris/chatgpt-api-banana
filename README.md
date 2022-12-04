@@ -1,8 +1,6 @@
 # ChatGPT api
 
 * It uses playwright and chromium to open browser and parse html.
-* It is an unoffical api for development purpose only.
-
 
 # How to install
 
@@ -27,8 +25,13 @@ pip install -r requirements.txt
 * If you are installing playwright for the first time, it will ask you to run this command for one time only.
 
 ```
-playwright install
+playwright install && playwright install-deps
 ```
+* Set env vars so login works
+export EMAIL="your openai email"
+export PASSWORD="your openai password"
+
+* Note: you need to use email/password login for this to work, gmail auth isn't supported. 
 
 * Now run the server
 
@@ -49,4 +52,4 @@ curl -XGET http://localhost:5001/chat?q=Write%20a%20python%20program%20to%20reve
 
 # Credit
 
-* All the credit for this script goes to [Daniel Gross's whatsapp gpt](https://github.com/danielgross/whatsapp-gpt) package. I have just taken the script as an individual file and added documentation for how to install and run it.
+* thanks to [Daniel Gross's whatsapp gpt](https://github.com/danielgross/whatsapp-gpt) package. + [Tarans cleanuped installation](https://github.com/taranjeet/chatgpt-api) for making this easier + Chat-GPT for advising me on how to access openai programatically. 
