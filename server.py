@@ -70,12 +70,15 @@ def start_browser():
         continue_button.click()
 
         print("filled in email")
-
-        # Submit the login form
-        password_field = PAGE.locator("label")
-        password_field.fill("bananabanana12")
-        continue_button = PAGE.locator("button[name=\"action\"]")
-        continue_button.click()
+        try:
+            # Submit the login form
+            password_field = PAGE.locator("label")
+            password_field.fill("bananabanana12")
+            continue_button = PAGE.locator("button[name=\"action\"]")
+            continue_button.click()
+        except Exception as e:
+            print("Failed to login: ", e)
+            return
 
     if not is_logged_in():
         # if you still aren't logged in well i got bad news for you son. i got 99 problems and auth is one
