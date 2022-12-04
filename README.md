@@ -1,4 +1,6 @@
-# ChatGPT api
+# ChatGPT api to host on Banana 
+
+* Still a work in progress. runs local, need to mod to work /w bananas infra
 
 * It uses playwright and chromium to open browser and parse html.
 
