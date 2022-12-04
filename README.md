@@ -1,6 +1,6 @@
 # ChatGPT api to host on Banana 
 
-* Still a work in progress. runs local, need to mod to work /w bananas infra
+* Still a work in progress. runs local, need to mod to work /w bananas infra. You could deploy this on vercel/zeet too!
 
 * It uses playwright and chromium to open browser and parse html.
 
