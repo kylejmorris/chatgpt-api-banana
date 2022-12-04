@@ -80,13 +80,7 @@ def start_browser():
             print("Failed to login: ", e)
             return
 
-    if not is_logged_in():
-        # if you still aren't logged in well i got bad news for you son. i got 99 problems and auth is one
-        return 
-
-    print("Logged in")
-    APP.run(port=5001, threaded=False)
-
 if __name__ == "__main__":
     start_browser()
+    APP.run(port=5001, threaded=False)
 
