@@ -28,12 +28,16 @@ def inference(request):
     session_id = model_inputs.get('session_id', None)
     if session_id == None:
         return response.json({'message': "No session ID provided"})
-    
-    api = ChatGPT(session_id)  # auth with session token
-    resp = api.send_message(prompt)
-    print(resp['message'])
 
-    return response.json(resp['message']) # Do not edit - returning a dictionary as JSON is a required interface
+    conversation_id = model_inputs.get('conversation_id', None)
+    if conversation_id == None:
+        print("This is a new conversation.")
+    
+    api = ChatGPT(session_id, conversation_id)  # auth with session token
+    resp = api.send_message(prompt)
+    print(resp['message'], resp['conversation_id'])
+
+    return response.json({"message": resp['message'], "conversation_id": resp['conversation_id']}) # Do not edit - returning a dictionary as JSON is a required interface
 
 
 if __name__ == '__main__':
