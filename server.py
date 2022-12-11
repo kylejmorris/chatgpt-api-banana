@@ -32,12 +32,19 @@ def inference(request):
     conversation_id = model_inputs.get('conversation_id', None)
     if conversation_id == None:
         print("This is a new conversation.")
-    
-    api = ChatGPT(session_id, conversation_id)  # auth with session token
-    resp = api.send_message(prompt)
-    print(resp['message'], resp['conversation_id'])
 
-    return response.json({"message": resp['message'], "conversation_id": resp['conversation_id']}) # Do not edit - returning a dictionary as JSON is a required interface
+    parent_id = model_inputs.get('parent_id', None)
+    if parent_id == None:
+        print("This is the first message in conversation.")
+    
+    print("Sending message to OpenAI...")
+    print("Prompt: " + prompt)
+    print("Conversation ID: " + str(conversation_id))
+    print("Parent ID: " + str(parent_id))
+    api = ChatGPT(session_id, conversation_id=conversation_id, parent_id=parent_id)  # auth with session token
+    resp = api.send_message(prompt)
+
+    return response.json({"message": resp['message'], "conversation_id": resp['conversation_id'], "parent_id": resp['parent_id']}) 
 
 
 if __name__ == '__main__':
