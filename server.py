@@ -54,7 +54,8 @@ def start_browser():
     if not is_logged_in():
         print(" attempting to login to openai")
         # Find the "Log in" button on the page
-        login_button = PAGE.get_by_role("button", name="Log in")
+        login_button = PAGE.get_by_role("button")
+        print(login_button)
 
         # Click the button
         login_button.click()
